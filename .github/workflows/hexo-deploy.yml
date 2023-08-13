@@ -1,0 +1,20 @@
+name: Hexo Deploy GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: theme-keep/hexo-deploy-github-pages-action@master
+      env:
+        PERSONAL_TOKEN: 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 # secret 名
+        PUBLISH_REPOSITORY: axyyyyyyy/axyyyyyyy.github.io # 公共仓库，格式：GitHub 用户名/仓库名
+        BRANCH: gh-pages # 分支，填 gh-pages 就行
+        PUBLISH_DIR: ./public # 部署 public 目录下的文件
